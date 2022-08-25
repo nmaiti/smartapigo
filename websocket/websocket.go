@@ -164,6 +164,8 @@ func (s *SocketClient) Serve() {
 		}
 		// create a dialer
 		d := websocket.DefaultDialer
+		d.ReadBufferSize = 1024
+		d.WriteBufferSize = 2048
 		d.HandshakeTimeout = s.connectTimeout
 		d.TLSClientConfig = &tls.Config{
 			InsecureSkipVerify: true,
